@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>snapchat Profile Page (Demo)</title>
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+    body{background:#fff8c6;color:#0a0a0a;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+
+    .card{width:420px;max-width:94vw;background:#ffffff;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,0.08);overflow:hidden}
+
+    /* Header (yellow bar) */
+    .header{background:#FFFC00;padding:18px 20px;display:flex;align-items:center;justify-content:space-between}
+    .header h2{font-size:18px}
+    .icon{width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;font-weight:700}
+
+    .profile{padding:20px;display:flex;gap:16px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:24px;background:linear-gradient(180deg,#fff,#f3f3f3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:6px solid #fff}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+
+    .info{flex:1}
+    .name{font-size:18px;font-weight:800;margin-bottom:4px}
+    .handle{font-size:13px;color:#555;margin-bottom:8px}
+    .meta{display:flex;gap:8px;align-items:center}
+    .pill{background:rgba(0,0,0,0.06);padding:6px 8px;border-radius:12px;font-size:13px}
+
+    .actions{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 12px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn.primary{background:#111;color:#fff}
+    .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.08)}
+
+    .stats{display:flex;gap:10px;padding:12px 20px;border-top:1px solid rgba(0,0,0,0.04);background:#fff}
+    .stat{flex:1;text-align:center}
+    .stat .num{font-weight:800;font-size:16px}
+    .stat .label{font-size:12px;color:#666}
+
+    .section{padding:16px 20px;border-top:1px solid rgba(0,0,0,0.04)}
+    .section h3{font-size:14px;margin-bottom:10px}
+    .story-card{display:flex;gap:10px;align-items:center}
+    .story-thumb{width:72px;height:72px;border-radius:12px;background:linear-gradient(180deg,#fff,#eee);overflow:hidden}
+    .story-thumb img{width:100%;height:100%;object-fit:cover}
+    .story-info{flex:1}
+    .muted{font-size:13px;color:#555}
+
+    .list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    .list button{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:10px;border:0;background:rgba(0,0,0,0.03);cursor:pointer}
+
+    .footer-note{font-size:12px;color:#666;padding:12px 20px}
+
+    @media (max-width:460px){.card{width:100%}}
+  </style>
+</head>
+<body>
+  <article class="card" role="article">
+    <header class="header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="icon">←</div>
+        <h2>Profile</h2>
+      </div>
+      <div class="icon" title="Settings">⚙️</div>
+    </header>
+
+    <section class="profile">
+      <div class="avatar" id="avatar">
+        <!-- Placeholder avatar (replace with user's Bitmoji or image) -->
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="avatar">
+      </div>
+
+      <div class="info">
+        <div class="name" id="displayName">switi</div>
+        <div class="handle" id="username">switi</div>
+
+        <div class="meta">
+          <div class="pill" id="snapScore">Snap Score: <strong>8,124</strong></div>
+          <div class="pill" id="streak">🔥 12</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="addFriend">Add Friend</button>
+          <button class="btn ghost" id="shareProfile">Share</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats" aria-hidden="true">
+      <div class="stat"><div class="num" id="snapsCount">243</div><div class="label">Snaps</div></div>
+      <div class="stat"><div class="num" id="friendsCount">158</div><div class="label">Friends</div></div>
+      <div class="stat"><div class="num" id="storiesCount">5</div><div class="label">Stories</div></div>
+    </div>
+
+    <section class="section">
+      <h3>My Story</h3>
+      <div class="story-card">
+        <div class="story-thumb"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="story"></div>
+        <div class="story-info">
+          <div style="font-weight:800">Weekend Vibes</div>
+          <div class="muted">2h ago · 120 views</div>
+        </div>
+        <button class="btn ghost" id="editStory">Edit</button>
+      </div>
+
+      <div class="list" style="margin-top:12px">
+        <button id="changeAvatar">Change Bitmoji <span>›</span></button>
+        <button id="privacy">Privacy Settings <span>›</span></button>
+        <button id="memories">Memories <span>›</span></button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Quick Actions</h3>
+      <div class="list">
+        <button id="sendSnap">Send a Snap <span>📸</span></button>
+        <button id="chat">Message <span>💬</span></button>
+        <button id="block">Block User <span>⚠️</span></button>
+      </div>
+    </section>
+
+    <div class="footer-note">This is a demo UI. Replace images and wire up actions to your backend when deploying.</div>
+  </article>
+
+  <script>
+    // Basic interactivity for demo
+    document.getElementById('addFriend').addEventListener('click', ()=>{
+      const btn = document.getElementById('addFriend');
+      btn.textContent = 'Friend Added'; btn.disabled = true; btn.style.opacity = '0.9';
+    });
+
+    document.getElementById('shareProfile').addEventListener('click', ()=>{
+      const u = location.href; // demo share
+      if(navigator.share){ navigator.share({title:document.getElementById('displayName').textContent,text:'Check my profile',url:u}).catch(()=>{}); }
+      else{ navigator.clipboard?.writeText(u).then(()=>alert('Profile link copied (demo)')) }
+    });
+
+    document.getElementById('changeAvatar').addEventListener('click', ()=>{
+      alert('Open Bitmoji/avatar picker (demo).');
+    });
+
+    // Example: allow editing display name inline
+    document.getElementById('displayName').addEventListener('click', ()=>{
+      const cur = document.getElementById('displayName');
+      const val = cur.textContent;
+      const input = document.createElement('input');
+      input.value = val; input.style.fontSize='18px'; input.style.fontWeight='800'; input.style.width='100%';
+      cur.replaceWith(input); input.focus();
+      input.addEventListener('blur', ()=>{ const d = document.createElement('div'); d.id='displayName'; d.className='name'; d.textContent = input.value || val; input.replaceWith(d); });
+    });
+  </script>
+</body>
+</html>
