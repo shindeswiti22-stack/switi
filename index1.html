@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Website — Your Name</title>
+  <meta name="description" content="A clean, responsive single-file website template." />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#06b6d4;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#071022 0%, #081226 100%);color:#e6eef6;line-height:1.5;
+      -webkit-font-smoothing:antialiased;padding:0 20px;
+    }
+    .container{max-width:1000px;margin:24px auto}
+
+    /* NAV */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav{display:flex;gap:14px}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:#042027;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+    .hamburger{display:none;border:0;background:transparent;color:var(--muted)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-top:28px}
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 6px 24px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
+    h1{margin:0;font-size:32px}
+    p.lead{color:var(--muted);margin-top:12px}
+    .buttons{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-outline{border:1px solid rgba(255,255,255,0.06);color:var(--muted;background:transparent)}
+
+    /* SKILLS / GRID */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .skill{padding:12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* FOOTER */
+    footer{margin:28px 0;text-align:center;color:var(--muted)}
+
+    /* CONTACT */
+    form{display:grid;gap:10px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    textarea{min-height:120px}
+
+    /* small screens */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none}
+      .hamburger{display:block}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">YN</div>
+        <div>
+          <div style="font-weight:800">Your Name</div>
+          <div style="font-size:12px;color:var(--muted)">Web Developer • Designer</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Hire me</a>
+      </nav>
+
+      <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    </header>
+
+    <main class="hero">
+      <section class="card">
+        <h1>Hi — I'm Your Name.</h1>
+        <p class="lead">I build clean, accessible websites and simple web apps. I focus on performance, responsive layouts and great UX.</p>
+        <div class="buttons">
+          <a class="btn" href="#work" style="background:linear-gradient(90deg,var(--accent),#7c3aed);color:#02121a;border-radius:10px">See my work</a>
+          <a class="btn btn-outline" href="#contact">Contact me</a>
+        </div>
+
+        <div class="grid" style="margin-top:22px">
+          <div class="skill">HTML &amp; CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Responsive Design</div>
+          <div class="skill">Performance</div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Quick info</h3>
+        <p style="color:var(--muted);margin:0 0 8px">Location: India</p>
+        <p style="color:var(--muted);margin:0 0 8px">Email: <a href="mailto:you@example.com">you@example.com</a></p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.04);margin:12px 0">
+        <h4 style="margin:8px 0">Experience</h4>
+        <p style="color:var(--muted);margin:0">3+ years building websites, prototypes and small apps.</p>
+      </aside>
+    </main>
+
+    <section id="work" class="card" style="margin-top:18px">
+      <h2 style="margin-top:0">Selected Projects</h2>
+      <div class="grid">
+        <div class="card" style="padding:12px"> 
+          <strong>Project A</strong>
+          <p class="lead" style="margin:8px 0 0">A one-line description of the project and tools used.</p>
+        </div>
+        <div class="card" style="padding:12px">
+          <strong>Project B</strong>
+          <p class="lead" style="margin:8px 0 0">Another project description.</p>
+        </div>
+        <div class="card" style="padding:12px">
+          <strong>Project C</strong>
+          <p class="lead" style="margin:8px 0 0">Short summary and link.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px">
+      <h2 style="margin-top:0">Contact</h2>
+      <form onsubmit="submitForm(event)">
+        <input id="name" placeholder="Your name" required />
+        <input id="email" type="email" placeholder="you@example.com" required />
+        <textarea id="message" placeholder="Tell me about your project" required></textarea>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px">
+          <button type="submit" class="btn" style="background:var(--accent);color:#02121a">Send</button>
+          <button type="reset" class="btn btn-outline">Reset</button>
+        </div>
+      </form>
+      <div id="thanks" style="display:none;margin-top:12px;color:var(--accent)">Thanks! Your message was sent (demo only).</div>
+    </section>
+
+    <footer>
+      <small>© <span id="year"></span> Your Name • Built with HTML &amp; CSS</small>
+    </footer>
+  </div>
+
+  <script>
+    // simple JS for mobile menu and demo form
+    const ham = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    ham && ham.addEventListener('click', ()=>{
+      const expanded = ham.getAttribute('aria-expanded') === 'true';
+      ham.setAttribute('aria-expanded', String(!expanded));
+      nav.style.display = expanded ? 'none' : 'flex';
+    });
+
+    function submitForm(e){
+      e.preventDefault();
+      // demo-only: show a thank-you message and reset the form
+      document.querySelector('form').reset();
+      document.getElementById('thanks').style.display = 'block';
+      setTimeout(()=> document.getElementById('thanks').style.display='none',4000);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
